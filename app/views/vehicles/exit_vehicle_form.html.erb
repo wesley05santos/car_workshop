@@ -1,0 +1,20 @@
+<%= form_with url: exit_vehicle_path, method: :delete do |form| %>
+  <div>
+    <%= form.label :plate, 'Insira a Placa: '%>
+    <%= form.text_field :plate %>
+  </div>
+
+  <div>
+    <p>
+      <%= form.label :exit_km, 'Insira o KM: '%>
+      <%= form.number_field :exit_km %>
+    </p>
+  </div>
+
+  <div>
+    <%= form.label :service_description, 'Dados do serviço realizado: '%>
+    <p><%= form.text_area :service_description %></p>
+  </div>
+
+  <p><%= form.submit 'Dar saída' %></p>
+<% end %>

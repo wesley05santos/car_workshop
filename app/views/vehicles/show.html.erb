@@ -1,0 +1,56 @@
+<h1>
+  Informações do Veículo: <%= @vehicle.model %>
+</h1>
+
+<h2>
+  Dados de Entrada do Veículo
+</h2>
+<dl>
+    <dd>
+      <strong>Marca: </strong> <%= @vehicle.brand %>
+    </dd>
+
+    <dd>
+      <strong>Placa: </strong> <%= @vehicle.plate %>
+    </dd>
+
+    <dd>
+      <strong>Ano: </strong> <%= @vehicle.year %>
+    </dd>
+
+    <dd>
+      <strong>KM Entrada: </strong> <%= @vehicle.entry_km %>
+    </dd>
+
+    <dd>
+      <strong>Data de Entrada: </strong> <%= @vehicle.entry_date.strftime("%d-%m-%Y %H:%M") %>
+    </dd>
+
+    <dd>
+      <strong>Descrição do Problema: </strong> <%= @vehicle.problem_description %>
+    </dd>
+
+    <hr>
+
+  <h2>
+    Dados de Saída do Veículo
+  </h2>
+
+    <dd>
+      <strong>Data de Saída: </strong> <%= @vehicle.exit_date %>
+    </dd>
+
+    <dd>
+      <strong>KM Saída: </strong> <%= @vehicle.exit_km %>
+    </dd>
+
+    <dd>
+      <strong>Diferença KM: </strong> <%= @vehicle.exit_km - @vehicle.entry_km %>
+    </dd>
+
+    <dd>
+      <strong>Serviço realizado: </strong> <%= @vehicle.service_description %>
+    </dd>
+</dl>
+
+<%= link_to 'Editar', edit_vehicle_path %>

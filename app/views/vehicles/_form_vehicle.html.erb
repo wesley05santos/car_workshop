@@ -1,0 +1,35 @@
+<%= form_with model: @vehicle do |form| %>
+  <p>
+    <%= form.label 'Modelo: ' %>
+    <%= form.text_field :model %>
+  </p>
+
+  <p>
+    <%= form.label 'Marca: ' %>
+    <%= form.text_field :brand %>
+  </p>
+
+  <p>
+    <%= form.label 'Ano: ' %>
+    <%= form.number_field :year %>
+  </p>
+
+  <p>
+    <%= form.label 'KM: ' %>
+    <%= form.number_field :entry_km %>
+  </p>
+
+  <p>
+    <%= form.label 'Placa: ' %>
+    <%= form.text_field :plate %>
+  </p>
+
+  <p>
+    <%= form.label 'Descrição do Problema: ' %>
+    <%= form.text_area :problem_description %>
+  </p>
+
+  <p>
+    <%= form.submit 'Salvar' %> 
+  </p>
+<% end %>

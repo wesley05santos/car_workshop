@@ -1,0 +1,7 @@
+<% @vehicles.each do |vehicle| %>
+  <p>
+    <%= vehicle.model %> |
+    <%= vehicle.plate %> =>
+    <%= link_to 'Detalhes', vehicle %>
+  </p>
+<% end %>

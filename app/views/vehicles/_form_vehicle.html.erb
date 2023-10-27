@@ -1,6 +1,6 @@
 <%= render 'shared/errors', object: @vehicle %>
 
-<%= form_with model: @vehicle do |form| %>
+<%= form_with model: @vehicle, data: { turbo: false } do |form| %>
   <p>
     <%= form.label 'Modelo: ' %>
     <%= form.text_field :model %>

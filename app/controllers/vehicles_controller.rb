@@ -54,7 +54,7 @@ class VehiclesController < ApplicationController
 
   def exit_vehicle
     @vehicle = Vehicle.find_by(plate: params[:plate])
-    
+
     if @vehicle.update(service_description: params[:service_description],
                       exit_km: params[:exit_km],
                       exit_date:  Time.zone.now
@@ -62,7 +62,7 @@ class VehiclesController < ApplicationController
 
       return redirect_to vehicle_path(@vehicle.id)
     end
-
+    flash[:notice] = @vehicle.errors.full_messages
     render :exit_vehicle_form
   end
 

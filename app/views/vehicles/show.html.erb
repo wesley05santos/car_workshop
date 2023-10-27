@@ -5,30 +5,31 @@
 <h2>
   Dados de Entrada do Veículo
 </h2>
-<dl>
-    <dd>
+<div>
+    <p>
       <strong>Marca: </strong> <%= @vehicle.brand %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>Placa: </strong> <%= @vehicle.plate %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>Ano: </strong> <%= @vehicle.year %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>KM Entrada: </strong> <%= @vehicle.entry_km %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>Data de Entrada: </strong> <%= @vehicle.entry_date.strftime("%d-%m-%Y %H:%M") %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>Descrição do Problema: </strong> <%= @vehicle.problem_description %>
-    </dd>
+    </p>
+</div>
 
     <hr>
 
@@ -37,22 +38,23 @@
     Dados de Saída do Veículo
   </h2>
 
-    <dd>
+  <div>
+    <p>
       <strong>Data de Saída: </strong> <%= @vehicle.exit_date.strftime("%d-%m-%Y %H:%M") %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>KM Saída: </strong> <%= @vehicle.exit_km %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>Diferença KM: </strong> <%= @vehicle.exit_km - @vehicle.entry_km %>
-    </dd>
+    </p>
 
-    <dd>
+    <p>
       <strong>Serviço realizado: </strong> <%= @vehicle.service_description %>
-    </dd>
-  </dl>
+    </p>
+  </div>
 <% end %>
 
 

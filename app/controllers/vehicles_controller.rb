@@ -36,14 +36,14 @@ class VehiclesController < ApplicationController
 
   def update
     @vehicle = Vehicle.find(params[:id])
+    
     if @vehicle.update(model: params[:vehicle][:model],
-
-      brand: params[:vehicle][:brand],
-      plate: params[:vehicle][:plate],
-      problem_description: params[:vehicle][:problem_description],
-      year: params[:vehicle][:year],
-      entry_km: params[:vehicle][:entry_km]
-      )
+                      brand: params[:vehicle][:brand],
+                      plate: params[:vehicle][:plate],
+                      problem_description: params[:vehicle][:problem_description],
+                      year: params[:vehicle][:year],
+                      entry_km: params[:vehicle][:entry_km]
+                      )
 
       return redirect_to vehicle_path
 
@@ -54,14 +54,16 @@ class VehiclesController < ApplicationController
 
   def exit_vehicle
     @vehicle = Vehicle.find_by(plate: params[:plate])
-    @vehicle.update(service_description: params[:service_description],
-                    exit_km: params[:exit_km],
-                    exit_date:  Time.zone.now
-    )
     
-    
+    if @vehicle.update(service_description: params[:service_description],
+                      exit_km: params[:exit_km],
+                      exit_date:  Time.zone.now
+      )  
 
-    return redirect_to vehicle_path(@vehicle.id)
+      return redirect_to vehicle_path(@vehicle.id)
+    end
+
+    render :exit_vehicle_form
   end
 
   def exit_vehicle_form; end

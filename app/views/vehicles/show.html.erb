@@ -32,6 +32,7 @@
 
     <hr>
 
+<% if @vehicle.exit_date.present? %>    
   <h2>
     Dados de Saída do Veículo
   </h2>
@@ -51,6 +52,8 @@
     <dd>
       <strong>Serviço realizado: </strong> <%= @vehicle.service_description %>
     </dd>
-</dl>
+  </dl>
+<% end %>
+
 
 <%= link_to 'Editar', edit_vehicle_path %>

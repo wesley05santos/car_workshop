@@ -1,6 +1,4 @@
-<%# <%= render 'shared/errors', object: @vehicle %>
-
-<%= form_with url: exit_vehicle_path, method: :delete do |form| %>
+<%= form_with url: exit_vehicle_path, data: { turbo: false }, method: :delete do |form| %>
   <div>
     <%= form.label :plate, 'Insira a Placa: '%>
     <%= form.text_field :plate %>

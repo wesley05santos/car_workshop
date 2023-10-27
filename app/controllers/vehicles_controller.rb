@@ -61,9 +61,10 @@ class VehiclesController < ApplicationController
       )  
 
       return redirect_to vehicle_path(@vehicle.id)
+
     end
     flash[:notice] = @vehicle.errors.full_messages
-    render :exit_vehicle_form
+    render :exit_vehicle_form    
   end
 
   def exit_vehicle_form; end

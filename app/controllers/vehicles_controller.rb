@@ -1,4 +1,6 @@
 class VehiclesController < ApplicationController
+  before_action :time_zone
+  
   def index
     @vehicles = Vehicle.all
   end
@@ -18,7 +20,7 @@ class VehiclesController < ApplicationController
                           problem_description: params[:vehicle][:problem_description],
                           year: params[:vehicle][:year],
                           entry_km: params[:vehicle][:entry_km],
-                          entry_date: Time.now
+                          entry_date: Time.zone.now
     )
 
     if @vehicle.save
@@ -53,12 +55,18 @@ class VehiclesController < ApplicationController
   def exit_vehicle
     @vehicle = Vehicle.find_by(plate: params[:plate])
     @vehicle.update(service_description: params[:service_description],
-                    exit_km: params[:exit_km]
+                    exit_km: params[:exit_km],
+                    exit_date:  Time.zone.now
     )
-    @vehicle.exit_date = Time.now
+    
+    
 
     return redirect_to vehicle_path(@vehicle.id)
   end
 
   def exit_vehicle_form; end
+
+  def time_zone
+    Time.zone = 'America/Sao_Paulo'
+  end
 end

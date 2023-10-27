@@ -37,7 +37,7 @@
   </h2>
 
     <dd>
-      <strong>Data de Saída: </strong> <%= @vehicle.exit_date %>
+      <strong>Data de Saída: </strong> <%= @vehicle.exit_date.strftime("%d-%m-%Y %H:%M") %>
     </dd>
 
     <dd>

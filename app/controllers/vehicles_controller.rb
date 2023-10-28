@@ -22,11 +22,10 @@ class VehiclesController < ApplicationController
                           entry_km: params[:vehicle][:entry_km],
                           entry_date: Time.zone.now
     )
-
     if @vehicle.save
       return redirect_to vehicle_path(@vehicle.id)
-    end
 
+    end
     render :new
   end
 
@@ -35,8 +34,7 @@ class VehiclesController < ApplicationController
   end
 
   def update
-    @vehicle = Vehicle.find(params[:id])
-    
+    @vehicle = Vehicle.find(params[:id])    
     if @vehicle.update(model: params[:vehicle][:model],
                       brand: params[:vehicle][:brand],
                       plate: params[:vehicle][:plate],
@@ -44,7 +42,6 @@ class VehiclesController < ApplicationController
                       year: params[:vehicle][:year],
                       entry_km: params[:vehicle][:entry_km]
                       )
-
       return redirect_to vehicle_path
 
     end
@@ -56,16 +53,15 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find_by(plate: params[:plate])
     if @vehicle.nil?
       flash[:notice] = 'Placa não encontrada'  
-      return render :exit_vehicle_form 
-    
-      # binding.break
+      return render :exit_vehicle_form     
+
     end
 
     if @vehicle.exit_date.present?
       flash[:notice] = 'Veículo já foi realizado a Saída Anteriormente!!!'    
       return redirect_to root_path
-    end
-      # binding.break
+
+    end  
 
     if @vehicle.update(service_description: params[:service_description],
                       exit_km: params[:exit_km],

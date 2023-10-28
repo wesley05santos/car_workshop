@@ -54,11 +54,23 @@ class VehiclesController < ApplicationController
 
   def exit_vehicle
     @vehicle = Vehicle.find_by(plate: params[:plate])
+    if @vehicle.nil?
+      flash[:notice] = 'Placa não encontrada'  
+      return render :exit_vehicle_form 
+    
+      # binding.break
+    end
+
+    if @vehicle.exit_date.present?
+      flash[:notice] = 'Veículo já foi realizado a Saída Anteriormente!!!'    
+      return redirect_to root_path
+    end
+      # binding.break
 
     if @vehicle.update(service_description: params[:service_description],
                       exit_km: params[:exit_km],
                       exit_date:  Time.zone.now
-      )  
+    )  
 
       return redirect_to vehicle_path(@vehicle.id)
 

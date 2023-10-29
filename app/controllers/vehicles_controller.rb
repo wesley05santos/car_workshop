@@ -2,7 +2,7 @@ class VehiclesController < ApplicationController
   before_action :time_zone
   
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.where(exit_date: nil)
   end
 
   def show

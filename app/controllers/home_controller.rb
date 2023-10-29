@@ -1,6 +1,6 @@
 class HomeController < ApplicationController 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.where(exit_date: nil)
     render 'vehicles/index'
   end
 end

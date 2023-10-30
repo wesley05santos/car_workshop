@@ -1,0 +1,8 @@
+<%= form_with url: vehicle_history_path, data: { turbo: false } do |form| %>
+  <div>
+    <%= form.label :plate, 'Insira a Placa: '%>
+    <%= form.text_field :plate %>
+  </div>
+
+  <p><%= form.submit 'Pesquisar' %></p>
+<% end %>

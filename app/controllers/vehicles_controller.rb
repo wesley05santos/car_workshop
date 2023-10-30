@@ -50,7 +50,7 @@ class VehiclesController < ApplicationController
   end
 
   def exit_vehicle
-    @vehicle = Vehicle.find_by(plate: params[:plate])
+    @vehicle = Vehicle.where(plate: params[:plate]).order(updated_at: :desc).first
     if @vehicle.nil?
       flash[:notice] = 'Placa não encontrada'  
       return render :exit_vehicle_form     
@@ -62,16 +62,11 @@ class VehiclesController < ApplicationController
       return redirect_to root_path
 
     end  
+    @vehicle.exit_date = Time.zone.now
+    @vehicle.service_description = params[:service_description].empty? ? nil : params[:service_description]
+    @vehicle.exit_km = params[:exit_km]    
+    return redirect_to vehicle_path(@vehicle.id) if @vehicle.save
 
-    if @vehicle.update(service_description: params[:service_description],
-                      exit_km: params[:exit_km],
-                      exit_date:  Time.zone.now
-    )  
-
-      return redirect_to vehicle_path(@vehicle.id)
-
-    end
-    flash[:notice] = @vehicle.errors.full_messages
     render :exit_vehicle_form    
   end
 
@@ -80,4 +75,11 @@ class VehiclesController < ApplicationController
   def time_zone
     Time.zone = 'America/Sao_Paulo'
   end
+
+  def vehicle_history
+    @vehicles = Vehicle.where(plate: params[:plate])
+    render :index
+  end
+
+  def vehicle_history_form; end
 end

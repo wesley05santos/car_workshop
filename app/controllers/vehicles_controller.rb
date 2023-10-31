@@ -78,6 +78,13 @@ class VehiclesController < ApplicationController
 
   def vehicle_history
     @vehicles = Vehicle.where(plate: params[:plate])
+    # binding.break
+    if @vehicles.empty?
+      flash[:notice] = 'Placa não encontrada'  
+      return render :vehicle_history_form     
+
+    end
+
     render :index
   end
 

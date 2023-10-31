@@ -31,7 +31,9 @@
     </p>
 </div>
 
-    <hr>
+<%= link_to 'Editar', edit_vehicle_path if @vehicle.exit_date.nil? %>
+
+<hr>
 
 <% if @vehicle.exit_date.present? %>    
   <h2>
@@ -56,6 +58,3 @@
     </p>
   </div>
 <% end %>
-
-
-<%= link_to 'Editar', edit_vehicle_path %>
